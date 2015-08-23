@@ -1,0 +1,9 @@
+package com.henry.minecraftgamebase.arena;
+
+public class Lobby {
+
+	public Lobby() {
+
+	}
+
+}

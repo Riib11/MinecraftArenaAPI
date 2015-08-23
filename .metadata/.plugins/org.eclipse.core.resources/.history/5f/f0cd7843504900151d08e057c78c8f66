@@ -1,0 +1,30 @@
+package com.henry.minecraftgamebase.arena.players;
+
+import com.henry.minecraftgamebase.arena.Arena;
+
+public class ArenaStatusMeta {
+
+	public Arena arena;
+	public ArenaStatus ArenaStatus;
+
+	public Arena getArena() {
+		return arena;
+	}
+
+	public void setArena(Arena arena) {
+		this.arena = arena;
+	}
+
+	public ArenaStatus getArenaStatus() {
+		return ArenaStatus;
+	}
+
+	public void setArenaStatus(ArenaStatus arenaStatus) {
+		ArenaStatus = arenaStatus;
+	}
+
+	public ArenaStatusMeta(Arena a) {
+		this.arena = a;
+		this.ArenaStatus = ArenaStatus.PREGAME_LOBBY_NOTREADY;
+	}
+}

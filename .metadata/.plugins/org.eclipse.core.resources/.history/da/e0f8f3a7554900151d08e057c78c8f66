@@ -1,0 +1,24 @@
+package com.henry.minecraftgamebase.arena;
+
+public class Lobby {
+
+	public enum LobbyType {
+		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D
+	};
+
+	private boolean complete = false;
+	private LobbyType lobbyType;
+
+	public Lobby(LobbyType lt) {
+		this.lobbyType = lt;
+	}
+
+	public boolean isComplete() {
+		return complete;
+	}
+
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+
+}

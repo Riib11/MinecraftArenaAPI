@@ -1,0 +1,9 @@
+package com.henry.minecraftgamebase.arena.players;
+
+public class ArenaStatusMeta {
+
+	public ArenaStatusMeta() {
+
+	}
+
+}

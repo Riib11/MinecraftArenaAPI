@@ -1,0 +1,15 @@
+1440304704162	Encapsulate field 'players'
+1440304895307	Encapsulate field 'isActive'
+1440304899513	Encapsulate field 'isPlaying'
+1440304972181	Move compilation unit
+1440305198659	Delete element
+1440305364427	Encapsulate field 'arenaType'
+1440305437324	Encapsulate field 'complete'
+1440305545426	Rename type 'Spawn'
+1440306278034	Delete element
+1440306282939	Delete element
+1440306787597	Encapsulate field 'complete'
+1440306794357	Encapsulate field 'lobbyType'
+1440308432640	Encapsulate field 'complete'
+1440308735088	Encapsulate field 'spawns'
+1440308738991	Encapsulate field 'lobbies'

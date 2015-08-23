@@ -1,0 +1,15 @@
+package com.henry.minecraftgamebase.arena;
+
+public class ArenaManager {
+
+	Arena arena;
+
+	public ArenaManager(Arena a) {
+		this.arena = a;
+	}
+	
+	public void joinPlayer() {
+		
+	}
+
+}

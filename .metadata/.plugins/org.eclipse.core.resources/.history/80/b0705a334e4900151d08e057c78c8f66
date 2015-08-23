@@ -1,0 +1,21 @@
+package com.henry.minecraftgamebase;
+
+import org.bukkit.event.EventHandler;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin {
+
+	public static JavaPlugin plugin;
+
+	@EventHandler
+	public void onEnable() {
+		plugin = this;
+		plugin.getLogger().info("Enabled MinecraftGameBase");
+	}
+
+	@EventHandler
+	public void onDisable() {
+
+	}
+
+}

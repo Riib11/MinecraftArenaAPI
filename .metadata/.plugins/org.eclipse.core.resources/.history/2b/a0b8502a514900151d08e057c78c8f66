@@ -1,0 +1,61 @@
+package com.henry.minecraftgamebase.arena;
+
+import java.util.ArrayList;
+
+import org.bukkit.entity.Player;
+
+public class Arena {
+
+	public Arena(String name, String description, int maxPlayers) {
+		this.name = name;
+		this.desciption = description;
+		this.maxPlayers = maxPlayers;
+		this.manager = new ArenaManager(this);
+		this.setPlayers(new ArrayList<Player>());
+	}
+
+	public ArenaManager manager;
+
+	private String name;
+	private String desciption;
+	private int maxPlayers;
+
+	public boolean active = false;
+	public boolean inGame = false;
+
+	private ArrayList<Player> players;
+
+	public String getDesciption() {
+		return desciption;
+	}
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+
+	public int getMaxPlayers() {
+		return maxPlayers;
+	}
+
+	public void setMaxPlayers(int maxPlayers) {
+		this.maxPlayers = maxPlayers;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
+	}
+	
+
+}

@@ -1,0 +1,15 @@
+package com.henry.minecraftgamebase.arena;
+
+public class Lobby {
+
+	public enum LobbyType {
+		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D
+	};
+	
+	private boolean complete = false;
+
+	public Lobby() {
+
+	}
+
+}

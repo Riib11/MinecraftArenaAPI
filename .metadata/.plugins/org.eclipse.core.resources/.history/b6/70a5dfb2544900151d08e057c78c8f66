@@ -1,0 +1,18 @@
+package com.henry.minecraftgamebase.arena;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+public class SpawnPoint {
+	
+	Location location;
+	
+	public SpawnPoint(Location l) {
+		this.location = l;
+	}
+	
+	public void revivePlayer(Player p) {
+		
+	}
+
+}

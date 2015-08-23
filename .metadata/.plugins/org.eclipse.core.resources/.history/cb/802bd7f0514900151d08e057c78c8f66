@@ -1,0 +1,7 @@
+package com.henry.minecraftgamebase.arena.players;
+
+public enum ArenaStatus {
+
+	PREGAME_LOBBY_NOTREADY, PREGAME_LOBBY_READY, INGAME_ALIVE, INGAME_DEAD,
+
+}

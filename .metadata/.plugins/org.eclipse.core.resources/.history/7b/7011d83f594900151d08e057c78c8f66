@@ -1,0 +1,9 @@
+package com.henry.minecraftgamebase.arena.builder;
+
+public class ArenaBuilder {
+	
+	public static void setLobby(Arena a, Cuboid c) {
+		
+	}
+
+}

@@ -1,0 +1,40 @@
+package com.henry.minecraftgamebase.arena;
+
+public class Lobby {
+
+	public enum LobbyType {
+		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D
+	};
+
+	private boolean complete = false;
+	private LobbyType lobbyType;
+
+	public Lobby(LobbyType lt) {
+		this.setLobbyType(lt);
+	}
+
+	public boolean isComplete() {
+		return complete;
+	}
+
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+
+	public LobbyType getLobbyType() {
+		return lobbyType;
+	}
+
+	public void setLobbyType(LobbyType lobbyType) {
+		this.lobbyType = lobbyType;
+	}
+	
+	public boolean checkIfComplete() {
+		boolean b = false;
+		
+		//TODO check spanw is avaliable, and inside of cuboid
+		
+		return b;
+	}
+
+}
