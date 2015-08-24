@@ -13,8 +13,11 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="double" key="selection"/>
+		<item value="Complete" key="selection"/>
 		<list key="findhistory">
+			<item value="public static Cuboid fromString(String str) {"/>
+			<item value="complete"/>
+			<item value="manager"/>
 			<item value="int"/>
 		</list>
 		<list key="replacehistory">

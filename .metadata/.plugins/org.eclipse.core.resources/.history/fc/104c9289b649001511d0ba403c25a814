@@ -1,0 +1,31 @@
+package com.henry.minecraftgamebase.arena;
+
+public enum ArenaType {
+
+	ONE_TEAM, TWO_TEAMS, THREE_TEAMS, FOUR_TEAMS;
+
+	private String name;
+
+	static {
+		ONE_TEAM.name = "ONE_TEAM";
+		TWO_TEAMS.name = "TWO_TEAMS";
+		THREE_TEAMS.name = "THREE_TEAMS";
+		FOUR_TEAMS.name = "FOUR_TEAMS";
+	}
+
+	public ArenaType fromString(String s) {
+		ArenaType at = null;
+
+		if (s.equalsIgnoreCase(ONE_TEAM.name)) {
+			at = ONE_TEAM;
+		} else if (s.equalsIgnoreCase(TWO_TEAMS.name)) {
+			at = TWO_TEAMS;
+		} else if (s.equalsIgnoreCase(THREE_TEAMS.name)) {
+			at = THREE_TEAMS;
+		} else if (s.equalsIgnoreCase(FOUR_TEAMS.name)) {
+			at = FOUR_TEAMS;
+		}
+
+		return at;
+	}
+}

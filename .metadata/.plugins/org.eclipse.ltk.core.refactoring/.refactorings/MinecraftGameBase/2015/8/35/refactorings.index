@@ -13,3 +13,13 @@
 1440308432640	Encapsulate field 'complete'
 1440308735088	Encapsulate field 'spawns'
 1440308738991	Encapsulate field 'lobbies'
+1440340544841	Encapsulate field 'lobbySpawn'
+1440340878134	Encapsulate field 'cuboid'
+1440341075464	Encapsulate field 'cuboid'
+1440346015297	Delete element
+1440346514640	Rename field 'customConfigFile'
+1440346533838	Rename field 'customConfig'
+1440347020365	Rename method 'reloadCustomConfig'
+1440347029572	Rename method 'getCustomConfig'
+1440432181420	Delete element
+1440441361377	Encapsulate field 'votes'

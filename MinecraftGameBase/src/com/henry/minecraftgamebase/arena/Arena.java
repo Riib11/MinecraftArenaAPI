@@ -1,32 +1,81 @@
 package com.henry.minecraftgamebase.arena;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import org.bukkit.entity.Player;
 
+import com.henry.minecraftgamebase.arena.builder.Cuboid;
+import com.henry.minecraftgamebase.utilities.ArenaInfoAccessor;
+
 public class Arena {
 
 	public enum ArenaType {
-		ONE_TEAM, TWO_TEAM, THREE_TEAM, FOUR_TEAM
+
+		ONE_TEAM, TWO_TEAMS, THREE_TEAMS, FOUR_TEAMS;
+
+		private String name;
+		int number;
+
+		static {
+			ONE_TEAM.name = "ONE_TEAM";
+			TWO_TEAMS.name = "TWO_TEAMS";
+			THREE_TEAMS.name = "THREE_TEAMS";
+			FOUR_TEAMS.name = "FOUR_TEAMS";
+
+			ONE_TEAM.number = 1;
+			TWO_TEAMS.number = 2;
+			THREE_TEAMS.number = 3;
+			FOUR_TEAMS.number = 4;
+		}
+
+		public static ArenaType fromString(String s) {
+			ArenaType at = null;
+			if (s.equalsIgnoreCase(ONE_TEAM.name)) {
+				at = ONE_TEAM;
+			} else if (s.equalsIgnoreCase(TWO_TEAMS.name)) {
+				at = TWO_TEAMS;
+			} else if (s.equalsIgnoreCase(THREE_TEAMS.name)) {
+				at = THREE_TEAMS;
+			} else if (s.equalsIgnoreCase(FOUR_TEAMS.name)) {
+				at = FOUR_TEAMS;
+			}
+			return at;
+		}
+
+		public String toString() {
+			return this.name();
+		}
+
+		public int getNumber() {
+			return this.number;
+		}
 	}
 
-	public Arena(String name, String description, int maxPlayers, ArenaType at) {
+	public Arena(String name, String description, int maxPlayers, int votes, ArenaType at,
+			Lobby lobby, Cuboid cuboid, SpawnPoint[] spawns)
+			throws UnsupportedEncodingException {
 		this.name = name;
 		this.desciption = description;
 		this.maxPlayers = maxPlayers;
-		this.manager = new ArenaManager(this);
 		this.setPlayers(new ArrayList<Player>());
-	}
+		this.lobby = lobby;
+		// spawns
+		this.initializeArenaForType();
 
-	public ArenaManager manager;
+	}
 
 	private String name;
 	private String desciption;
 	private int maxPlayers;
+	private int votes;
 
-	private Lobby[] lobbies;
+	private Lobby lobby;
+
 	private SpawnPoint[] spawns;
+	private Cuboid cuboid;
 
+	@SuppressWarnings("unused")
 	private boolean complete = false;
 
 	private ArenaType arenaType;
@@ -97,34 +146,20 @@ public class Arena {
 	}
 
 	public boolean checkIfComplete() {
-		boolean b = false;
+		if (lobby == null || !lobby.checkIfComplete()) {
+			return false;
+		}
+		for (SpawnPoint sp : spawns) {
+			if (sp == null) {
+				return false;
+			}
+		}
 
-		// TODO: check lobbies, spawns, and all info
-
-		return b;
+		return true;
 	}
 
 	public void initializeArenaForType() {
-		int x = 2;
-		if (this.arenaType.equals(ArenaType.ONE_TEAM)) {
-			x = 1;
-		} else if (this.arenaType.equals(ArenaType.TWO_TEAM)) {
-			x = 2;
-		} else if (this.arenaType.equals(ArenaType.THREE_TEAM)) {
-			x = 3;
-		} else if (this.arenaType.equals(ArenaType.FOUR_TEAM)) {
-			x = 4;
-		}
-		this.lobbies = new Lobby[x];
-		this.spawns = new SpawnPoint[x];
-	}
-
-	public boolean isComplete() {
-		return complete;
-	}
-
-	public void setComplete(boolean complete) {
-		this.complete = complete;
+		this.spawns = new SpawnPoint[this.arenaType.getNumber()];
 	}
 
 	public SpawnPoint[] getSpawns() {
@@ -135,12 +170,39 @@ public class Arena {
 		this.spawns = spawns;
 	}
 
-	public Lobby[] getLobbies() {
-		return lobbies;
+	public Cuboid getCuboid() {
+		return cuboid;
 	}
 
-	public void setLobbies(Lobby[] lobbies) {
-		this.lobbies = lobbies;
+	public void setCuboid(Cuboid cuboid) {
+		this.cuboid = cuboid;
 	}
 
+	public void saveToArenaInfo() {
+		ArenaInfoAccessor.saveToArenaInfo(this);
+	}
+
+	public Lobby getLobby() {
+		return lobby;
+	}
+
+	public void setLobby(Lobby lobby) {
+		this.lobby = lobby;
+	}
+
+	public ArrayList<String> getPlayersAsString() {
+		ArrayList<String> al = new ArrayList<String>();
+		for (Player p : players) {
+			al.add(p.getName());
+		}
+		return al;
+	}
+
+	public int getVotes() {
+		return votes;
+	}
+
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
 }

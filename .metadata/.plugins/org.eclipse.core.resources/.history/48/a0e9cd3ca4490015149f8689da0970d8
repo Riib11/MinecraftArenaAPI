@@ -1,0 +1,34 @@
+package com.henry.minecraftgamebase.arena;
+
+public class Lobby {
+
+	public enum LobbyType {
+		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D
+	};
+
+	@SuppressWarnings("unused")
+	private boolean complete = false;
+	private LobbyType lobbyType;
+	private SpawnPoint lobbySpawn;
+
+	public Lobby(LobbyType lt) {
+		this.setLobbyType(lt);
+	}
+
+	public LobbyType getLobbyType() {
+		return lobbyType;
+	}
+
+	public void setLobbyType(LobbyType lobbyType) {
+		this.lobbyType = lobbyType;
+	}
+
+	public boolean checkIfComplete() {
+		boolean b = false;
+
+		// TODO check spawn is avaliable, and inside of cuboid
+
+		return b;
+	}
+
+}

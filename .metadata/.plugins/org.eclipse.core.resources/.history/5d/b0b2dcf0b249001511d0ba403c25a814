@@ -1,0 +1,27 @@
+package com.henry.minecraftgamebase;
+
+import org.bukkit.event.EventHandler;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import com.henry.minecraftgamebase.utilities.ArenaInfoAccessor;
+
+public class Main extends JavaPlugin {
+
+	public static JavaPlugin plugin;
+	public static ArenaInfoAccessor arenaInfoAcessor;
+
+	@EventHandler
+	public void onEnable() {
+		plugin = this;
+		plugin.getLogger().info("Enabled MinecraftGameBase API");
+		plugin.reloadConfig();
+		this.arenaInfoAcessor = new ArenaInfoAcessor().
+	}
+
+	@EventHandler
+	public void onDisable() {
+		plugin.getLogger().info("Disabled MinecraftGameBase API");
+		plugin.saveConfig();
+	}
+
+}

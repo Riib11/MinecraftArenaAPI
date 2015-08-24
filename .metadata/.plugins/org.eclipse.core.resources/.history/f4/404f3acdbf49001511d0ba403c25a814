@@ -1,0 +1,42 @@
+package com.henry.minecraftgamebase.arena;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+
+public class SpawnPoint {
+
+	public enum SpawnType {
+		L_A, L_B, L_C, L_D, A, B, C, D
+	}
+
+	Location location;
+	SpawnType st;
+
+	public SpawnPoint(Location l, SpawnType st) {
+		this.location = l;
+	}
+
+	public void setSpawn(Player p) {
+		p.setBedSpawnLocation(location, true);
+	}
+
+	public void teleportPlayer(Player p) {
+		p.teleport(location);
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public SpawnType getSt() {
+		return st;
+	}
+
+	public void setSt(SpawnType st) {
+		this.st = st;
+	}
+}

@@ -1,0 +1,8 @@
+package com.henry.minecraftgamebase.arena;
+
+import com.henry.minecraftgamebase.arena.Arena.ArenaType;
+
+public enum ArenaType {
+
+	ONE_TEAM, TWO_TEAM, THREE_TEAM, FOUR_TEAM
+}

@@ -1,0 +1,90 @@
+package com.henry.minecraftgamebase.utilities;
+
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
+import com.henry.minecraftgamebase.Main;
+import com.henry.minecraftgamebase.arena.Arena;
+import com.henry.minecraftgamebase.arena.Lobby;
+import com.henry.minecraftgamebase.arena.SpawnPoint;
+import com.henry.minecraftgamebase.arena.builder.Cuboid;
+
+public class ArenaInfoAccessor {
+
+	private FileConfiguration arenaInfoFileConfig = null;
+	private File arenaInfo = null;
+
+	private String location = "arenaInfo.yml";
+
+	public void reloadArenaInfo() throws UnsupportedEncodingException {
+		if (arenaInfo == null) {
+			arenaInfo = new File(Main.plugin.getDataFolder(),
+					"customConfig.yml");
+		}
+		arenaInfoFileConfig = YamlConfiguration.loadConfiguration(arenaInfo);
+
+		// Look for defaults in the jar
+		Reader defConfigStream = new InputStreamReader(
+				Main.plugin.getResource(location), "UTF8");
+		if (defConfigStream != null) {
+			YamlConfiguration defConfig = YamlConfiguration
+					.loadConfiguration(defConfigStream);
+			arenaInfoFileConfig.setDefaults(defConfig);
+		}
+	}
+
+	public FileConfiguration getArenaInfo() throws UnsupportedEncodingException {
+		if (arenaInfoFileConfig == null) {
+			reloadArenaInfo();
+		}
+		return arenaInfoFileConfig;
+	}
+
+	public static Arena getArena(String name)
+			throws UnsupportedEncodingException {
+		String path = "arenas." + name;
+		ArenaInfoAccessor aia = Main.arenaInfoAcessor;
+		ConfigurationSection cs = aia.getArenaInfo().getConfigurationSection(
+				path);
+		String description = cs.getString("description");
+		int maxPlayers;
+		boolean isActive, isPlaying, isComplete;
+		ArrayList<Player> players;
+		Cuboid cuboid;
+
+		return null;
+	}
+
+	public static void saveToArenaInfo(Arena arena) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("description", arena.getDesciption());
+		map.put("maxPlayers", arena.getMaxPlayers());
+		map.put("isActive", arena.isActive());
+		map.put("isPlaying", arena.isPlaying());
+		map.put("isComplete", arena.checkIfComplete());
+		map.put("players", arena.getPlayersAsString());
+		map.put("cuboid", arena.getCuboid().toString());
+
+		// lobbies
+		HashMap<String, String> lobbies = new HashMap<String, String>();
+		for (Lobby l : arena.getLobbies()) {
+			lobbies.put(l.getLobbyType().toString(), l.getCuboid().toString());
+		}
+
+		// spawns
+		HashMap<String, String> spawns = new HashMap<String, String>();
+		for (SpawnPoint sp : arena.getSpawns()) {
+			spawns.put(sp.getSpawnType().toString(), sp.toString());
+		}
+
+	}
+}

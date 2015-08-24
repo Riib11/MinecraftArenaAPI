@@ -1,0 +1,73 @@
+package com.henry.minecraftgamebase.utilities;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class ConfigFileAccessor {
+
+	private final JavaPlugin plugin;
+
+	/**
+	 * Enables multiple yaml configuration files.
+	 * 
+	 * @param plugin
+	 */
+	public ConfigFileAccessor(JavaPlugin instance) {
+		plugin = instance;
+	}
+
+	/**
+	 * Does the same as getConfig() but for the given config file.
+	 * 
+	 * @param configFile
+	 * @return FileConfiguration from configFile
+	 */
+	public FileConfiguration loadConfig(File configFile) {
+		FileConfiguration fileConfiguration = YamlConfiguration
+				.loadConfiguration(configFile);
+
+		// Look for defaults in the jar
+		InputStream defConfigStream = plugin.getResource(configFile.getName());
+		if (defConfigStream != null) {
+			YamlConfiguration defConfig = YamlConfiguration
+					.loadConfiguration(defConfigStream);
+			fileConfiguration.setDefaults(defConfig);
+		}
+		return fileConfiguration;
+	}
+
+	/**
+	 * Will save the given FileConfiguration to the given File.
+	 * 
+	 * @param configFile
+	 * @param fileConfiguration
+	 */
+	public void saveConfig(File configFile, FileConfiguration fileConfiguration) {
+		if (fileConfiguration == null || configFile == null) {
+			return;
+		} else {
+			try {
+				fileConfiguration.save(configFile);
+			} catch (IOException ex) {
+				plugin.getLogger().info(ex.getMessage());
+			}
+		}
+	}
+
+	/**
+	 * Does the same as saveDefaultConfig() but for the given config file.
+	 * 
+	 * @param configFile
+	 */
+	public void saveDefaultConfig(File configFile) {
+		if (!configFile.exists()) {
+			this.plugin.saveResource(configFile.getName(), false);
+		}
+	}
+
+}

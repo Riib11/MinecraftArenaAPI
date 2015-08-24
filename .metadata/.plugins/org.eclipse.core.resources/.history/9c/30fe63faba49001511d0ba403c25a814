@@ -1,0 +1,48 @@
+package com.henry.minecraftgamebase.arena;
+
+import org.bukkit.entity.Player;
+
+public class ArenaManager {
+
+	public static void toggleArenaActive(Arena arena) {
+		arena.setActive(!arena.isActive());
+	}
+
+	public static void toggleArenaActive(Arena arena, boolean b) {
+		arena.setActive(b);
+	}
+
+	public static void joinPlayer(Arena arena, Player p) {
+
+	}
+
+	public static void leavePlayer(Arena arena, Player p) {
+
+	}
+
+	public static void votePlayer(Arena arena, Player p) {
+
+	}
+
+	public static void startGame(Arena arena) {
+		arena.setPlaying(true);
+		distributePlayers();
+	}
+
+	private static void distributePlayers(Arena arena) {
+
+	}
+
+	public static void containPlayersInBounds(Arena arena) {
+
+	}
+
+	public static void respawnPlayer(Arena arena, Player p) {
+
+	}
+
+	public static void endGame(Arena arena) {
+		arena.setPlaying(false);
+	}
+
+}

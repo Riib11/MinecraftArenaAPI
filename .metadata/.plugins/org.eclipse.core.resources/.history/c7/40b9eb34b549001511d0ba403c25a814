@@ -1,0 +1,11 @@
+package com.henry.minecraftgamebase.arena;
+
+
+public enum ArenaType {
+	
+	public static ArenaType fromString(String s) {
+		
+	}
+
+	ONE_TEAM, TWO_TEAM, THREE_TEAM, FOUR_TEAM
+}

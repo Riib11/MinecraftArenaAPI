@@ -1,0 +1,36 @@
+package com.henry.minecraftgamebase.arena;
+
+import com.henry.minecraftgamebase.arena.builder.Cuboid;
+
+public class Lobby {
+
+	@SuppressWarnings("unused")
+	private boolean complete = false;
+	private LobbyType lobbyType;
+	private Cuboid cuboid;
+
+	public Lobby() {
+		this.setLobbyType(lt);
+	}
+
+	public void setLobbyType(LobbyType lobbyType) {
+		this.lobbyType = lobbyType;
+	}
+
+	public boolean checkIfComplete() {
+		boolean b = false;
+
+		// TODO does have a cuboid
+
+		return b;
+	}
+
+	public Cuboid getCuboid() {
+		return cuboid;
+	}
+
+	public void setCuboid(Cuboid cuboid) {
+		this.cuboid = cuboid;
+	}
+
+}

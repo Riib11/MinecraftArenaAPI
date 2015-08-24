@@ -1,40 +1,26 @@
 package com.henry.minecraftgamebase.arena;
 
-public class Lobby {
+import com.henry.minecraftgamebase.arena.builder.Cuboid;
 
-	public enum LobbyType {
-		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D
-	};
+public class Lobby extends Cuboid {
 
+	// max height is 100 blocks
+	public Lobby(double x1, double y1, double z1, double x2, double y2,
+			double z2) {
+		super(x1, y1, z1, x2, y2, z2);
+	}
+
+	public Lobby(Cuboid c) {
+		super(c);
+	}
+
+	@SuppressWarnings("unused")
 	private boolean complete = false;
-	private LobbyType lobbyType;
-
-	public Lobby(LobbyType lt) {
-		this.setLobbyType(lt);
-	}
-
-	public boolean isComplete() {
-		return complete;
-	}
-
-	public void setComplete(boolean complete) {
-		this.complete = complete;
-	}
-
-	public LobbyType getLobbyType() {
-		return lobbyType;
-	}
-
-	public void setLobbyType(LobbyType lobbyType) {
-		this.lobbyType = lobbyType;
-	}
 
 	public boolean checkIfComplete() {
-		boolean b = false;
-
-		// TODO check spanw is avaliable, and inside of cuboid
-
-		return b;
+		if (this.corner1.equals(this.corner2)) {
+			return false;
+		}
+		return true;
 	}
-
 }

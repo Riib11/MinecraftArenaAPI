@@ -1,0 +1,68 @@
+package com.henry.minecraftgamebase.arena;
+
+import java.io.UnsupportedEncodingException;
+
+import org.bukkit.entity.Player;
+
+import com.henry.minecraftgamebase.utilities.ArenaInfoAccessor;
+
+public class ArenaManager {
+
+	public static void toggleArenaActive(String arena)
+			throws UnsupportedEncodingException {
+		Arena a = load(arena);
+		a.setActive(!a.isActive());
+		save(a);
+	}
+
+	public static void toggleArenaActive(String arenaName, boolean b)
+			throws UnsupportedEncodingException {
+		Arena a = load(arenaName);
+		a.setActive(b);
+		save(a);
+	}
+
+	public static void joinPlayer(String arenaName, Player p) {
+
+	}
+
+	public static void leavePlayer(String arenaName, Player p) {
+
+	}
+
+	public static void votePlayer(String arenaName, Player p) {
+
+	}
+
+	public static void startGame(String arenaName) {
+		Arena a = load(arenaName);
+		distributePlayers(arena);
+	}
+
+	private static void distributePlayers(String arenaName) {
+
+	}
+
+	public static void containPlayersInBounds(String arenaName) {
+
+	}
+
+	public static void respawnPlayer(String arenaName, Player p) {
+
+	}
+
+	public static void endGame(String arenaName)
+			throws UnsupportedEncodingException {
+		load(arenaName).setPlaying(false);
+	}
+
+	private static Arena load(String arenaName)
+			throws UnsupportedEncodingException {
+		return ArenaInfoAccessor.getArena(arenaName);
+	}
+
+	private static void save(Arena arena) {
+		ArenaInfoAccessor.saveToArenaInfo(arena);
+	}
+
+}

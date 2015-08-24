@@ -1,0 +1,17 @@
+package com.henry.minecraftgamebase.arena.builder;
+
+import org.bukkit.Location;
+
+import com.henry.minecraftgamebase.arena.Arena;
+
+public class ArenaBuilder {
+
+	public static void setLobby(Arena a, Cuboid c) {
+
+	}
+
+	public static void setLobbySpawn(Arena a, int lobbyNum, Location loc) {
+
+	}
+
+}

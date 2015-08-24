@@ -1,0 +1,55 @@
+package com.henry.minecraftgamebase.arena;
+
+import org.bukkit.entity.Player;
+
+import com.henry.minecraftgamebase.utilities.ArenaInfoAccessor;
+
+public class ArenaManager {
+
+	public static void toggleArenaActive(String arena) {
+		arena.setActive(!arena.isActive());
+		ArenaInfoAccessor.saveToArenaInfo(arena);
+	}
+
+	public static void toggleArenaActive(String arenaName, boolean b) {
+		arena.setActive(b);
+	}
+
+	public static void joinPlayer(String arenaName, Player p) {
+
+	}
+
+	public static void leavePlayer(String arenaName, Player p) {
+
+	}
+
+	public static void votePlayer(String arenaName, Player p) {
+
+	}
+
+	public static void startGame(String arenaName) {
+		Arena a = arena.setPlaying(true);
+		distributePlayers(arena);
+	}
+
+	private static void distributePlayers(String arenaName) {
+
+	}
+
+	public static void containPlayersInBounds(String arenaName) {
+
+	}
+
+	public static void respawnPlayer(String arenaName, Player p) {
+
+	}
+
+	public static void endGame(String arenaName) {
+		arena.setPlaying(false);
+	}
+
+	private static Arena load(String arenaName) {
+		return ArenaInfoAccessor.getArena(arenaName);
+	}
+
+}

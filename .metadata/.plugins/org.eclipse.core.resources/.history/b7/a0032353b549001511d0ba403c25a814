@@ -1,0 +1,14 @@
+package com.henry.minecraftgamebase.arena;
+
+
+public enum ArenaType {
+	
+
+	ONE_TEAM(1), TWO_TEAM(2), THREE_TEAM(3), FOUR_TEAM(4)
+	
+	ArenaType(int players) {
+		
+	}
+	
+	protected int players;
+}

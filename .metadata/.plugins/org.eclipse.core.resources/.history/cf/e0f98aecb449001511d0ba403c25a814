@@ -1,0 +1,20 @@
+package com.henry.minecraftgamebase.arena;
+
+import com.henry.minecraftgamebase.arena.Arena.ArenaType;
+
+public enum ArenaType {
+	
+	
+		public ArenaType fromString(String s) {
+			ArenaType at = null;
+			if(s.equalsIgnoreCase("ONE_TEAM")) {
+				
+			}
+			
+			return at;
+		}
+		
+		ONE_TEAM, TWO_TEAM, THREE_TEAM, FOUR_TEAM
+	}
+
+

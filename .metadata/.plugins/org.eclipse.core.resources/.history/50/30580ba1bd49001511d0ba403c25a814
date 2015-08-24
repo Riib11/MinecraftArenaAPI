@@ -1,0 +1,62 @@
+package com.henry.minecraftgamebase.arena;
+
+import com.henry.minecraftgamebase.arena.builder.Cuboid;
+
+public class Lobby {
+
+	public enum LobbyType {
+		LOBBY_A, LOBBY_B, LOBBY_C, LOBBY_D;
+
+		private String name;
+
+		static {
+			LOBBY_A.name = "LOBBY_A";
+			LOBBY_B.name = "LOBBY_B";
+			LOBBY_C.name = "LOBBY_C";
+			LOBBY_D.name = "LOBBY_D";
+		}
+	};
+
+	@SuppressWarnings("unused")
+	private boolean complete = false;
+	private LobbyType lobbyType;
+	private SpawnPoint lobbySpawn;
+	private Cuboid cuboid;
+
+	public Lobby(LobbyType lt) {
+		this.setLobbyType(lt);
+	}
+
+	public LobbyType getLobbyType() {
+		return lobbyType;
+	}
+
+	public void setLobbyType(LobbyType lobbyType) {
+		this.lobbyType = lobbyType;
+	}
+
+	public SpawnPoint getLobbySpawn() {
+		return lobbySpawn;
+	}
+
+	public void setLobbySpawn(SpawnPoint lobbySpawn) {
+		this.lobbySpawn = lobbySpawn;
+	}
+
+	public boolean checkIfComplete() {
+		boolean b = false;
+
+		// TODO check spawn is avaliable, and inside of cuboid
+
+		return b;
+	}
+
+	public Cuboid getCuboid() {
+		return cuboid;
+	}
+
+	public void setCuboid(Cuboid cuboid) {
+		this.cuboid = cuboid;
+	}
+
+}
